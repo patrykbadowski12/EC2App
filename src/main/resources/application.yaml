@@ -1,0 +1,10 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://testdb.clhbnmjrna65.eu-west-1.rds.amazonaws.com/testDB
+    password: EC2pass1
+    username: admin
+    driverClassName: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
