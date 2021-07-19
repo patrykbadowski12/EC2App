@@ -11,10 +11,9 @@ phases:
     commands:
       - echo Build started on `date`
       - mvn install
-      - zip ec2Simpleapp.zip target/ec2Application-0.0.1-SNAPSHOT.jar 
   post_build:
     commands:
       - echo Build completed on `date`
 artifacts:
   files:
-    - ec2Simpleapp.zip
+    - target/ec2Application-0.0.1-SNAPSHOT.jar 
