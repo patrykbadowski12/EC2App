@@ -15,7 +15,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String hello() {
-        return "Hello from EC2 instance";
+        return "Hello from EC2 instance with automatic deploy";
     }
 
     @PostMapping("/user")
