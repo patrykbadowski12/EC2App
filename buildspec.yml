@@ -7,6 +7,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - mvn install
       - docker build -t java-app-ecr:latest .
       - docker tag java-app-ecr:latest 076132730982.dkr.ecr.eu-west-1.amazonaws.com/java-app-ecr:latest
   post_build:
