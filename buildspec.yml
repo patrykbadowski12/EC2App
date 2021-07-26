@@ -4,15 +4,17 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 076132730982.dkr.ecr.eu-west-1.amazonaws.com
   build:
     commands:
       - echo Build started on `date`
       - mvn install
-      - docker build -t java-app-ecr:latest .
+      - docker build -t java-app-ecr .
       - docker tag java-app-ecr:latest 076132730982.dkr.ecr.eu-west-1.amazonaws.com/java-app-ecr:latest
   post_build:
     commands:
        - echo Build completed on `date`
        - echo Pushing the Docker image...
-       - docker login -u AWS -p $(aws ecr get-login-password --region eu-west-1) 076132730982.dkr.ecr.eu-west-1.amazonaws.com/java-app-ecr
+       - aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 076132730982.dkr.ecr.eu-west-1.amazonaws.com
+       - docker tag java-app-ecr:latest 076132730982.dkr.ecr.eu-west-1.amazonaws.com/java-app-ecr:latest
        - docker push 076132730982.dkr.ecr.eu-west-1.amazonaws.com/java-app-ecr:latest
